@@ -1,0 +1,29 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <!-- Fond circulaire avec dégradé -->
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#8B4513;stop-opacity:1" />
+        </linearGradient>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+        </filter>
+    </defs>
+
+    <!-- Cercle de fond -->
+    <circle cx="64" cy="64" r="64" fill="url(#bgGradient)"/>
+
+    <!-- Croix blanche au centre -->
+    <g transform="translate(64, 64)" filter="url(#shadow)">
+        <!-- Barre verticale -->
+        <rect x="-19.2" y="-64"
+              width="19.20" height="640"
+              fill="white" rx="3" opacity="0.95"/>
+        <!-- Barre horizontale -->
+        <rect x="-64" y="-19.2"
+              width="640" height="19.20"
+              fill="white" rx="3" opacity="0.95"/>
+    </g>
+
+    <!-- Texte SML pour grandes icônes -->
+</svg>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode hors ligne - SangMeLima</title>
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D4AF37;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #FFF8F0;
+            --bg-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .offline-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .offline-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .offline-icon::before {
+            content: "📵";
+            font-size: 50px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .offline-features {
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .offline-features h2 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .btn-retry {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-retry:hover {
+            background: #7A3D0F;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .prayer-box {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .prayer-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .prayer-text {
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .loading-dots {
+            display: inline-block;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        .status-indicator {
+            margin-top: 30px;
+            padding: 15px;
+            background: #FFF3CD;
+            border-radius: 8px;
+            color: #856404;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #856404;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 600px) {
+            .offline-container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .offline-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .offline-icon::before {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon"></div>
+
+        <h1>Vous êtes hors ligne</h1>
+
+        <p>
+            Il semble que vous n'ayez pas de connexion Internet active.
+            Ne vous inquiétez pas, certaines fonctionnalités restent accessibles !
+        </p>
+
+        <div class="offline-features">
+            <h2>Disponible hors ligne :</h2>
+            <ul class="feature-list">
+                <li>Pages récemment consultées</li>
+                <li>Prières déjà téléchargées</li>
+                <li>Progression de vos neuvaines</li>
+                <li>Textes spirituels en cache</li>
+            </ul>
+        </div>
+
+        <div class="prayer-box">
+            <h3>Prière pour la connexion</h3>
+            <p class="prayer-text">
+                "Seigneur, dans ce moment de déconnexion,
+                aide-moi à me reconnecter à Toi.
+                Que ce temps de silence numérique
+                devienne un temps de prière et de méditation.
+                Amen."
+            </p>
+        </div>
+
+        <button class="btn-retry" onclick="checkConnection()">
+            Réessayer la connexion
+        </button>
+
+        <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span>Vérification de la connexion<span class="loading-dots">...</span></span>
+        </div>
+    </div>
+
+    <script>
+        // Vérifier la connexion périodiquement
+        function checkConnection() {
+            fetch('/manifest.json', { method: 'HEAD' })
+                .then(() => {
+                    // Connexion rétablie
+                    window.location.reload();
+                })
+                .catch(() => {
+                    // Toujours hors ligne
+                    showNotification('Toujours hors ligne. Veuillez vérifier votre connexion.');
+                });
+        }
+
+        // Notification temporaire
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #333;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 25px;
+                animation: slideUp 0.3s ease;
+                z-index: 1000;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideDown 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Animation CSS pour notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                from { opacity: 0; transform: translate(-50%, 20px); }
+                to { opacity: 1; transform: translate(-50%, 0); }
+            }
+            @keyframes slideDown {
+                from { opacity: 1; transform: translate(-50%, 0); }
+                to { opacity: 0; transform: translate(-50%, 20px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Vérification automatique toutes les 10 secondes
+        setInterval(() => {
+            if (navigator.onLine) {
+                fetch('/manifest.json', { method: 'HEAD' })
+                    .then(() => window.location.reload())
+                    .catch(() => {});
+            }
+        }, 10000);
+
+        // Écouter les changements de connexion
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>
